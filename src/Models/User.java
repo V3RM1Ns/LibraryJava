@@ -1,5 +1,7 @@
 package Models;
 
+import Extensions.NullCheckExtensions;
+
 public class User {
 
     private static int _id;
@@ -9,12 +11,8 @@ public class User {
 
 
     public User(String name, String gmail) {
-        if (name==null || name.trim().isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
-        if (gmail==null || gmail.trim().isEmpty()) throw new IllegalArgumentException("Gmail cannot be empty");
-
-
-        this.name = name.trim();
-        this.gmail = gmail;
+        this.name = NullCheckExtensions.isValidString(name, "Name").trim();
+        this.gmail = NullCheckExtensions.isValidString(gmail, "Gmail").trim();
         this.id = _id++;
     }
 
@@ -31,19 +29,20 @@ public class User {
     }
 
     public void setName(String name){
-        if (name != null && !name.trim().isEmpty()) this.name = name;
-
+        this.name = NullCheckExtensions.isValidString(name, "Name").trim();
     }
 
     public void setGmail(String gmail){
-        if (gmail != null && !gmail.trim().isEmpty()) this.gmail = gmail;
-
+        this.gmail = NullCheckExtensions.isValidString(gmail, "Gmail").trim();
     }
 
     public  void showInfo(){
         System.out.println("Name: "+name+" | Gmail: "+gmail);
     }
 
-
+    @Override
+    public String toString() {
+        return "ID: " + id + " | Name: " + name + " | Gmail: " + gmail;
+    }
 
 }

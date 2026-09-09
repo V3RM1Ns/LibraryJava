@@ -1,16 +1,15 @@
 package Models;
 
+import Extensions.NullCheckExtensions;
+
 public final class Teacher extends User {
 
     private String department;
 
-
     public Teacher(String name, String gmail,String department) {
         super(name, gmail);
 
-        if(department==null || department.trim().isEmpty()) throw new IllegalArgumentException("Department cannot be empty!");
-
-        this.department=department;
+        this.department = NullCheckExtensions.isValidString(department, "Department").trim();
     }
 
     public String getDepartment(){
@@ -18,8 +17,7 @@ public final class Teacher extends User {
     }
 
     public void setDepartment(){
-        if(department==null || department.trim().isEmpty()) throw new IllegalArgumentException("Department cannot be empty!");
-        this.department=department;
+        this.department = NullCheckExtensions.isValidString(department, "Department").trim();
     }
 
     @Override
