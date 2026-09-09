@@ -4,7 +4,7 @@ import Extensions.NullCheckExtensions;
 
 public class User {
 
-    private static int _id;
+    private static int _id = 1;
     private final int id;
     private String name;
     private  String gmail;

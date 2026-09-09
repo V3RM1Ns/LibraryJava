@@ -31,4 +31,12 @@ public final class Magazine extends LibraryItem {
                 " | Year: " + getYear() +
                 " | Issue Number: " + issueNumber);
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + getId() +
+                " | Title: " + getTitle() +
+                " | Year: " + getYear() +
+                " | Issue Number: " + issueNumber;
+    }
 }
